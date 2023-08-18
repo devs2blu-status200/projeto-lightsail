@@ -1,0 +1,47 @@
+# Arquivos temporários e de cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos de configuração
+*.sqlite3
+*.env
+
+# Arquivos gerados por IDEs/editores
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Arquivos de mídia gerados
+media/
+
+# Arquivos de logs
+*.log
+
+# Ambientes virtuais (exemplos para virtualenv e venv)
+venv/
+env/
+ENV/
+
+# Dependências instaladas
+node_modules/
+__pycache__/
+
+# Arquivos gerados por build
+build/
+dist/
+
+# Arquivos de configuração do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração do projeto
+*.settings
+*.conf
+*.ini
+
+# Arquivos de cache e backups
+*.swp
+*~
+*.bak
