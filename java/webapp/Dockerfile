@@ -1,5 +1,5 @@
 # Use official base image of Java Runtim
-FROM adoptopenjdk:11-jre-hotspot
+FROM adoptopenjdk/openjdk11
 
 # Set the working directory in docker
 WORKDIR /app
