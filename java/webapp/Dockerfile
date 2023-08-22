@@ -5,7 +5,7 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 
 # Copy the jar to the working directory
-COPY build/libs/my-web-app-0.0.1-SNAPSHOT.jar /app/my-web-app.jar
+COPY build/libs/webapp-0.0.1-SNAPSHOT-plain.jarcd /app/webapp.jar
 
 # Specify the entrypoint
 ENTRYPOINT ["java", "-jar", "/app/my-web-app.jar"]
