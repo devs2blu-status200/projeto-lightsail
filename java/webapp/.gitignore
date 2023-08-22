@@ -1,0 +1,26 @@
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.tar
+*.zip
+*.tar.gz
+*.rar
+*.ser
+*.swp
+*.bak
+*~
+*.*~
+## Ignore Intellij project files
+.idea/
+*.iml
+*.iws
+## Ignore Eclipse project files
+*.project
+*.classpath
+*.settings/
+## Ignore VSCode project files
+.vscode/
+## Ignore macOS artifacts
+.DS_Store
