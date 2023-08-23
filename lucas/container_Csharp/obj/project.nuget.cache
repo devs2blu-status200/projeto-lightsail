@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qw10D50ORps5qfgkX9RAusBdwzFIN1kPBMUBp+43Bd0oKmGf9F9bd0Dp1nLW5l0mXFYI0hwQF8dp4FUGCVOjpA==",
+  "dgSpecHash": "w9ZG0DI+lQsNE7uL/j+gOZak0Aeo0oJQH8k/NCxpYXFdnNF/JNGCpUgZtz74O+YbmsCq+ipGOH8x2jO6cOJjKg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\lucas\\devops\\container_C#2\\container_C#2.csproj",
+  "projectFilePath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\container_C#2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.10\\microsoft.aspnetcore.openapi.7.0.10.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\lucas\\devops\\container_C#2\\container_C#2.csproj": {}
+    "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\container_C#2.csproj": {}
   },
   "projects": {
-    "c:\\Users\\lucas\\devops\\container_C#2\\container_C#2.csproj": {
+    "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\container_C#2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\lucas\\devops\\container_C#2\\container_C#2.csproj",
+        "projectUniqueName": "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\container_C#2.csproj",
         "projectName": "container_C#2",
-        "projectPath": "c:\\Users\\lucas\\devops\\container_C#2\\container_C#2.csproj",
+        "projectPath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\container_C#2.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\lucas\\devops\\container_C#2\\obj\\",
+        "outputPath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -474,11 +474,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\devops\\container_C#2\\container_C#2.csproj",
+      "projectUniqueName": "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\container_C#2.csproj",
       "projectName": "container_C#2",
-      "projectPath": "C:\\Users\\lucas\\devops\\container_C#2\\container_C#2.csproj",
+      "projectPath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\container_C#2.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\devops\\container_C#2\\obj\\",
+      "outputPath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\lucas\\container_Csharp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
