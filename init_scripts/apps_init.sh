@@ -11,6 +11,12 @@ sudo dnf install git -y
 echo "Instalado"
 echo "----------"
 
+# Instala o curl
+echo "Instalando o curl"
+sudo dnf install curl -y
+echo "Instalado"
+echo "----------"
+
 # Instala o Docker
 echo "Instalando Docker"
 sudo dnf install docker -y
