@@ -11,11 +11,8 @@ services:
     command: npm start
 
   java:
-    build:
-      image: lucastheiss31/webjavav2:latest
-      pull_policy: always
-      ports:
-        - "3001:8080"
-      environment:
-        JAVA_ENV: development
-      command: npm start
+    image: lucastheiss31/webjavav2:latest
+    pull_policy: always
+    ports:
+      - "3001:8080"
+
