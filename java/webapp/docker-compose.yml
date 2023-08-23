@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build:
+      image: lucastheiss31/webjavav2
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:8080"
+    
+   

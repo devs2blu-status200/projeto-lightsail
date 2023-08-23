@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Main-Class: org.springframework.boot.loader.JarLauncher
+Main-Class: com.mywebapp.MyWebAppApplication
 Start-Class: com.mywebapp.MyWebAppApplication
 Spring-Boot-Version: 2.7.14
 Spring-Boot-Classes: BOOT-INF/classes/
