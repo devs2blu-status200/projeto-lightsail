@@ -11,4 +11,6 @@ services:
       - /etc/letsencrypt/live/www.status200.sol.app.br/privkey.pem:/cert/key.pem
       - /etc/letsencrypt/live/node.status200.sol.app.br/fullchain.pem:/cert/node.certificate.pem
       - /etc/letsencrypt/live/node.status200.sol.app.br/privkey.pem:/cert/node.key.pem
+      - /etc/letsencrypt/live/java.status200.sol.app.br-0001/fullchain.pem:/cert/node.certificate.pem
+      - /etc/letsencrypt/live/java.status200.sol.app.br-0001/privkey.pem:/cert/node.key.pem
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
