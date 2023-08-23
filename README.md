@@ -3,7 +3,7 @@
 
 ### Introdução:
 
-O motivo da documentação é para servir de orientação na conexão de imagens na Web e suas configurações como Load Balaner, certificado SSL, banco de dados. Assim vamos nos apegar em detalhes técnicos de como foi construída a estrutura na AWS. 
+O motivo da documentação é para servir de orientação na conexão de imagens na Web e suas configurações como Load Balancer, certificado SSL, banco de dados. Assim vamos nos apegar em detalhes técnicos de como foi construída a estrutura na AWS. 
 
 ### O que é Amazon Lightsail?
 
