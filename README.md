@@ -13,18 +13,11 @@ Serviço de computação em nuvem oferecido pela AWS, que tem o objeito de simpl
 
 ### Passo a passo: Criando banco de dados.
 
-Para criação da base de dados utilizamos o recurso pré-configurado do Lightsail, no menu pode ser visto como "Databases". 
-Vamos em Create Database e definimos os parâmetros solicitados.
+Criar instância de banco de dados do lightsail na região us-east-2 (Ohio)
 
-Primeiro a localidade, definimos como "Ohio, Zone A (us-east-2a)"
+É necessário informar um nome para o master database.
 
-Após escolhemos a database: MySQL 8.0.34 (no momento da criação). 
-
-User Name: dbmasteruser
-Password: -diJD6L+A75!>{.kG(50lfo{W-zXZESK
-Nome do DB: Database-lucastheiss
-
-Plano Stardard de 15 doláres/mês. 
+Anotar usuário, senha, host do banco e nome do master database.
 
 
 #
@@ -35,21 +28,21 @@ No menu Containers vamos em criar novo container, sendo na mesma região da base
 
 Selecionamos a versão nano e vamos para o Set Up deployment, especificando a customização do deploy
 
-Nome do container: wordpress-diogo-1
+Nome do container: wordpress-status200-<x>
 
 Imagem escolhida: bitnami/wordpress:latest
 
 Adicionar variáveis de ambiente:
 
-WORDPRESS_DATABASE_PASSWORD: -diJD6L+A75!>{.kG(50lfo{W-zXZESK
+WORDPRESS_DATABASE_PASSWORD: senha do banco
 
-WORDPRESS_DATABASE_USER: dbmasteruser
+WORDPRESS_DATABASE_USER: usuário do banco
 
-WORDPRESS_DATABASE_HOST: ls-3692fdf38110da5d66a1151c2da89c229ef91767.c5g9jbippsk1.us-east-2.rds.amazonaws.com --> É o endpoint da nossa base de dados. 
+WORDPRESS_DATABASE_HOST: É o endpoint da nossa base de dados. 
 
-WORDPRESS_DATABASE_NAME: dbstatus200
+WORDPRESS_DATABASE_NAME: nome do master database
 
-Adicionar também as portas para serem abertas:
+Liberar também as portas:
 
 Porta 8080 no protocolo HTTP e porta 8443 no HTTPS
 
@@ -64,31 +57,43 @@ Para Load Balancer vamos criar uma instância com uma imagem de Ubuntu.
 
 Selecionar a plataforma Linux/Unix, OS Only e Ubuntu 22.04 LTS. 
 
-Para identificar a instância usamos o noem "load-balancer-status200"
+Para identificar a instância usamos o nome "load-balancer-status200"
 
 E podemos criar. 
 
 Após a criação vamos acessar essa instância de Ubuntu usando SSH, no próprio painel da instância. 
 
-Antes de iniciar sudo apt-get update
+Executar sudo apt-get update
 
-criar um diretório para armazenar as chaves com sudo install -m 0755 -d /etc/apt/keyrings
+Instalar o docker
 
-Instalar o docker, primeiro atualizar os pacotes sudo apt-get update
+Subir uma segunda instância baseada no Amazon Linux 2023. Dessa instância, copiar o arquivo /etc/resolv.conf para a instância de load balancer, no mesmo caminho. Com isso é possível fazer a resolução de domínios internos da AWS.
 
-E instalar: sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+Configurar DNS para apontar endereços de interesse para essa máquina de load balancer.
 
-Editar as configurações do docker e nginx editando os arquivos nginx.conf, docker-compose.yml, resolv.conf.
+Instalar e executar o certbot para obter os certificados e chaves SSL dos domínios.
 
-No nginx.confg foi definido o bloco upstream que direciona as solicitações para as duas instâncias wordpress.
-O nginx vai redirecionar as solicitações HTTP para HTTPS no bloco server que escuta na porta 80. Outro bloco server escuta na porta 443, essa HTTPS. 
+no diretório home, executar os seguintes comandos para clonar apenas arquivos nginx do projeto github
 
-Bloco location configurado para encaminhar as solicitações das imagens wordprees pelo load balancer. 
+```bash
+git clone --filter=blob:none --no-checkout https://github.com/devs2blu-status200/projeto-lightsail.git
+cd projeto-lightsail
+git sparse-checkout init --cone
+git sparse-checkout set nginx
+git checkout
+```
+
+Não esqueça de confirmar se a configuração do docker-compose está correta em relação ao endereço dos arquivos de certificado e chave. Os volumes criados pelo `docker-compose.yml` devem ser correspondentes aos arquivos indicados no `nginx.conf`.
+
+Para subir o nginx basta executar
+
+```bash
+cd nginx
+docker compose up -d
+```
 
 #
-### Configuração de Dominio e Certificados
 
-Dominios status200.sol.app.br e www.status200.sol.app.br usando SSL, os caminhos para os certificados e cahves SSL foram configurados no arquivo nginx.conf.
 
 
 
