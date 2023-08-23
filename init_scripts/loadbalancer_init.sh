@@ -6,6 +6,12 @@ sudo apt-get install ca-certificates curl gnupg -y
 echo "Atualizado"
 echo "----------"
 
+# Instala o Git
+echo "Instalando Git"
+sudo apt install git -y
+echo "Instalado"
+echo "----------"
+
 # Instala o Docker
 echo "Instalando Docker"
 sudo install -m 0755 -d /etc/apt/keyrings

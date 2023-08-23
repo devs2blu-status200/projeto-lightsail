@@ -5,6 +5,12 @@ sudo dnf check-update && sudo dnf upgrade -y
 echo "Atualizado"
 echo "----------"
 
+# Instala o Git
+echo "Instalando o Git"
+sudo dnf install git -y
+echo "Instalado"
+echo "----------"
+
 # Instala o Docker
 echo "Instalando Docker"
 sudo dnf install docker -y
