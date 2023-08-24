@@ -8,7 +8,7 @@ on:
     paths:
       - 'nginx/**'
 env:
-  DEPLOY_DIR: /projeto-lightsail # Localização dos arquivos do projeto no servidor
+  DEPLOY_DIR: /projeto-lightsail/nginx # Localização dos arquivos do projeto no servidor
 
 jobs:
   ssh-and-run-nginx:
