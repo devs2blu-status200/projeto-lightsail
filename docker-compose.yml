@@ -18,7 +18,9 @@ services:
     pull_policy: always
     ports:
       - "3001:8080"
-
+    env_file:
+      - .env
+    
   dotnet:
     image: lucastheiss31/aspnetapp:latest
     pull_policy: always
