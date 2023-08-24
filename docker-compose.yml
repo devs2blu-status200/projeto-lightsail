@@ -18,3 +18,9 @@ services:
     ports:
       - "3001:8080"
 
+  dotnet:
+    image: lucastheiss31/aspnetapp:latest
+    pull_policy: always
+    ports:
+      - "3002:8080"
+
