@@ -23,6 +23,6 @@ services:
     image: lucastheiss31/aspnetapp:latest
     pull_policy: always
     ports:
-      - "3002:3002"
-    network_mode: "host"
+      - "3002:80"
+    
 
