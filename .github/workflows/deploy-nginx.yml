@@ -1,5 +1,6 @@
 name: Build e deploy do load balancer
 
+# Ativa o workflow apenas em alterações no diretório nginx na branch main
 on:
   push:
     branches:
@@ -7,12 +8,13 @@ on:
     paths:
       - 'nginx/**'
 env:
-  DEPLOY_DIR: /projeto-lightsail
+  DEPLOY_DIR: /projeto-lightsail # Localização dos arquivos do projeto no servidor
 
 jobs:
   ssh-and-run-nginx:
     runs-on: ubuntu-latest
 
+    # Faz SSH no servidor, usa git pull para atualizar os arquivos e em seguida sobe o container do nginx novamente.
     steps:
       - name: Deploy no servidor usando SSH
         uses: appleboy/ssh-action@v0.1.10
