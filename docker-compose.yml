@@ -28,3 +28,8 @@ services:
       - "3002:80"
     
 
+django:
+    image: lucastheiss31/djangocontainer:latest
+    pull_policy: always
+    ports:
+      - "3003:8000"
