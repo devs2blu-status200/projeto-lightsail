@@ -9,6 +9,8 @@ on:
 env:
   IMAGE_NAME: lucastheiss31/nodecontainer
   DEPLOY_DIR: /projeto-lightsail
+  BUILD_DIR: node
+  COMPOSE_SERVICE: node
 
 jobs:
   build-and-push-image:
@@ -26,7 +28,7 @@ jobs:
           tags: |
             type=raw,value=latest
 
-      - name: Login no Registro de Containers do Devopstools
+      - name: Login no Dockerhub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
@@ -35,7 +37,7 @@ jobs:
       - name: Build e Push da imagem Docker
         uses: docker/build-push-action@v3
         with:
-          context: node
+          context: ${{ env.BUILD_DIR }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -49,5 +51,5 @@ jobs:
           port: ${{ secrets.APPS_PORT }}
           script: |
             cd ${{ env.DEPLOY_DIR }} 
-            sudo docker-compose up -d node
+            sudo docker-compose up -d ${{ env.COMPOSE_SERVICE }}
             sudo docker image prune -a -f

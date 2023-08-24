@@ -1,0 +1,26 @@
+name: Atualiza arquivo compose no servidor
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docker-compose.yml
+env:
+  DEPLOY_DIR: /projeto-lightsail
+
+jobs:
+  update-compose-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull no servidor usando SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.APPS_HOST }}
+          username: ${{ secrets.ACTIONS_USER }}
+          key: ${{ secrets.ACTIONS_KEY }}
+          port: ${{ secrets.APPS_PORT }}
+          script: |
+            cd ${{ env.DEPLOY_DIR }} 
+            git pull
