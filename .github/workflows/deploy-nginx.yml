@@ -20,8 +20,8 @@ jobs:
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.LB_HOST }}
-          username: ${{ secrets.ACTIONS_USER }}
-          key: ${{ secrets.ACTIONS_KEY }}
+          username: ${{ secrets.LB_ACTIONS_USER }}
+          key: ${{ secrets.LB_ACTIONS_SECRET }}
           port: ${{ secrets.LB_PORT }}
           script: |
             cd ${{ env.DEPLOY_DIR }} 
