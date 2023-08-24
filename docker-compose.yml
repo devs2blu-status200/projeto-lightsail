@@ -12,6 +12,7 @@ services:
       - .env
     command: npm start
 
+
   java:
     image: lucastheiss31/webjavav2:latest
     pull_policy: always
