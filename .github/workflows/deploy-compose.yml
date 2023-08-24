@@ -1,19 +1,22 @@
 name: Atualiza arquivo compose no servidor
 
+# Ativado por alterações no arquivo docker-comnpose.yml na branch main
 on:
   push:
     branches:
       - main
     paths:
       - docker-compose.yml
+
 env:
-  DEPLOY_DIR: /projeto-lightsail
+  DEPLOY_DIR: /projeto-lightsail # Caminho dentro do servidor onde está localizado o docker-compose-yml
 
 jobs:
   update-compose-file:
     runs-on: ubuntu-latest
 
     steps:
+      # Faz SSH no servidor e executa o comando git pull para atualizar o arquivo docker-compose.yml
       - name: Pull no servidor usando SSH
         uses: appleboy/ssh-action@v0.1.10
         with:
