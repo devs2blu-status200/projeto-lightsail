@@ -92,9 +92,60 @@ cd nginx
 docker compose up -d
 ```
 
-#
+### Containers com aplicações
 
+Na instancia criada com uma imagem do amazon linux 2023 adicione um nome de status200-apps.
 
+Instalar o docker
+
+Clonar o repositorio `PROJETO-LIGHTSAIL` utilizando os comandos abaixo.
+
+```bash
+git clone --filter=blob:none --no-checkout https://github.com/devs2blu-status200/projeto-lightsail.git
+cd projeto-lightsail
+git sparse-checkout init --cone
+git sparse-checkout set main-directory
+git checkout
+```
+Para copiar apenas os arquivos do diretório principal.
+
+Dentro da pasta princial chamada `PROJETO-LIGHTSAIL` encontra-se um arquivo chamado `docker-compose.yml` onde está armazenada a configuração de cada aplicação que será feito o deploy em containers separados e mapeado em portas diferentes.
+
+No mesmo diretório encontra-se o `.env` contendo as variavéis de ambientes para a conexão das aplicações com o banco de dados.
+
+### Configuração docker-compose.yml
+
+```bash
+version: '3.8'
+
+services:
+  node:
+    image: lucastheiss31/nodecontainer:latest
+    pull_policy: always
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    env_file:
+      - .env
+    command: npm start
+
+  java:
+    image: lucastheiss31/webjavav2:latest
+    pull_policy: always
+    ports:
+      - "3001:8080"
+
+  dotnet:
+    image: lucastheiss31/aspnetapp:latest
+    pull_policy: always
+    ports:
+      - "3002:80"
+```
+
+### Licensa
+
+Este projeto está sob licença do MIT.
 
 
 
