@@ -27,6 +27,7 @@ echo "----------"
 
 # Clona o projeto git
 echo "Clonando o projeto git"
+cd /
 git clone --filter=blob:none --no-checkout https://github.com/devs2blu-status200/projeto-lightsail.git
 cd projeto-lightsail
 git sparse-checkout init --cone
