@@ -48,42 +48,33 @@ Esse processo de Deploy pode ser realizado 2 vezes usando os mesmos parâmetros,
 
 ### Load Balancer:
 
-Para Load Balancer vamos criar uma instância com uma imagem de Ubuntu.
+Criar uma instância com uma imagem de Ubuntu. Selecionar a plataforma Linux/Unix, OS Only e Ubuntu 22.04 LTS. Identificar a instância com o nome `load-balancer-status200`.
 
-Selecionar a plataforma Linux/Unix, OS Only e Ubuntu 22.04 LTS. 
+Acessar essa instância de Ubuntu usando SSH, no próprio painel da instância. 
 
-Para identificar a instância usamos o nome "load-balancer-status200"
+Execute os seguintes comandos para obter e iniciar o script de configuração do servidor.
 
-E podemos criar. 
+```bash
+curl -O https://raw.githubusercontent.com/devs2blu-status200/projeto-lightsail/main/init_scripts/loadbalancer_init.sh
+chmod +x apps_init.sh
+./apps_init.sh
+```
+O script vai solicitar o nome do usuário de automação e a chave pública de acesso, forneça ambos e não esqueça de configurar os segredos `LB_ACTIONS_USER` e `LB_ACTIONS_SECRET` do repositório com o nome do usuário definido e o valor da chave **privada**.
 
-Após a criação vamos acessar essa instância de Ubuntu usando SSH, no próprio painel da instância. 
+Subir uma segunda instância baseada no Amazon Linux 2023, identifique ela como `status-200-apps`. Dessa instância, copiar o arquivo `/etc/resolv.conf` para a instância de load balancer, no mesmo caminho. Com isso é possível fazer a resolução de domínios internos da AWS.
 
-Executar sudo apt-get update
-
-Instalar o docker
-
-Subir uma segunda instância baseada no Amazon Linux 2023. Dessa instância, copiar o arquivo /etc/resolv.conf para a instância de load balancer, no mesmo caminho. Com isso é possível fazer a resolução de domínios internos da AWS.
+Criar um IP fixo para cada máquina.
 
 Configurar DNS para apontar endereços de interesse para essa máquina de load balancer.
 
 Instalar e executar o certbot para obter os certificados e chaves SSL dos domínios.
 
-no diretório home, executar os seguintes comandos para clonar apenas arquivos nginx do projeto github
-
-```bash
-git clone --filter=blob:none --no-checkout https://github.com/devs2blu-status200/projeto-lightsail.git
-cd projeto-lightsail
-git sparse-checkout init --cone
-git sparse-checkout set nginx
-git checkout
-```
-
-Não esqueça de confirmar se a configuração do docker-compose está correta em relação ao endereço dos arquivos de certificado e chave. Os volumes criados pelo `docker-compose.yml` devem ser correspondentes aos arquivos indicados no `nginx.conf`.
+Não esqueça de confirmar se a configuração do docker-compose está correta em relação ao endereço dos arquivos de certificado e chave. Os volumes criados pelo `docker-compose.yml` devem ser correspondentes aos arquivos indicados no `nginx.conf`. Confirme também se os endereços IP indicados na configuração do Nginx estão corretos de acordo com o endereço IP criado para o servidor de apps.
 
 Para subir o nginx basta executar
 
 ```bash
-cd nginx
+cd /projeto-lightsail/nginx
 docker compose up -d
 ```
 
@@ -91,7 +82,7 @@ docker compose up -d
 
 Gere um par de chaves para acesso ssh na sua máquina local, elas serão usadas para acesso remoto ao usuário de automação do servidor de aplicações.
 
-Acesse o servidor Amazon Linux 2023 criado na etapa anterior e execute os seguintes comandos para obter o script de configuração do servidor.
+Acesse o servidor Amazon Linux 2023 criado na etapa anterior e execute os seguintes comandos para obter e iniciar o script de configuração do servidor.
 
 ```bash
 curl -O https://raw.githubusercontent.com/devs2blu-status200/projeto-lightsail/main/init_scripts/apps_init.sh
