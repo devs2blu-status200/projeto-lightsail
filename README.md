@@ -9,8 +9,6 @@ O motivo da documentação é para servir de orientação na conexão de imagens
 
 Serviço de computação em nuvem oferecido pela AWS, que tem o objeito de simplificar a implementação e gerenciamento de aplicações em websites. Facilidade de uso, alguns recursos já pré-configurados são alguns dos pontos que ajudam na simplificação. 
 
-#
-
 ### Passo a passo: Criando banco de dados.
 
 Criar instância de banco de dados do lightsail na região us-east-2 (Ohio)
@@ -19,8 +17,6 @@ Criar instância de banco de dados do lightsail na região us-east-2 (Ohio)
 
 Anotar usuário, senha, host do banco e nome do master database.
 
-
-#
 
 ### Criando Containers WordPress:
 
@@ -49,7 +45,6 @@ Porta 8080 no protocolo HTTP e porta 8443 no HTTPS
 
 Esse processo de Deploy pode ser realizado 2 vezes usando os mesmos parâmetros, visto que a imagem WordPress vai ter Load Balancer. 
 
-#
 
 ### Load Balancer:
 
@@ -92,65 +87,24 @@ cd nginx
 docker compose up -d
 ```
 
-### Containers com aplicações
+### Servidor de aplicações:
 
-Na instancia criada com uma imagem do amazon linux 2023 adicione um nome de status200-apps.
+Gere um par de chaves para acesso ssh na sua máquina local, elas serão usadas para acesso remoto ao usuário de automação do servidor de aplicações.
 
-Instalar o docker
-
-Clonar o repositorio `PROJETO-LIGHTSAIL` utilizando os comandos abaixo.
+Acesse o servidor Amazon Linux 2023 criado na etapa anterior e execute os seguintes comandos para obter o script de configuração do servidor.
 
 ```bash
-git clone --filter=blob:none --no-checkout https://github.com/devs2blu-status200/projeto-lightsail.git
-cd projeto-lightsail
-git sparse-checkout init --cone
-git sparse-checkout set main-directory
-git checkout
+curl -O https://raw.githubusercontent.com/devs2blu-status200/projeto-lightsail/main/init_scripts/apps_init.sh
+chmod +x apps_init.sh
+./apps_init.sh
 ```
-Para copiar apenas os arquivos do diretório principal.
 
-Dentro da pasta princial chamada `PROJETO-LIGHTSAIL` encontra-se um arquivo chamado `docker-compose.yml` onde está armazenada a configuração de cada aplicação que será feito o deploy em containers separados e mapeado em portas diferentes.
+O script vai solicitar o nome do usuário de automação e a chave pública de acesso, forneça ambos e não esqueça de configurar os segredos `ACTIONS_USER` e `ACTIONS_KEY` do repositório com o nome do usuário definido e o valor da chave **privada**.
 
-No mesmo diretório encontra-se o `.env` contendo as variavéis de ambientes para a conexão das aplicações com o banco de dados.
-
-### Configuração docker-compose.yml
+Uma vez concluído, para subir as aplicações basta executar.
 
 ```bash
-version: '3.8'
-
-services:
-  node:
-    image: lucastheiss31/nodecontainer:latest
-    pull_policy: always
-    ports:
-      - "3000:3000"
-    environment:
-      NODE_ENV: development
-    env_file:
-      - .env
-    command: npm start
-
-  java:
-    image: lucastheiss31/webjavav2:latest
-    pull_policy: always
-    ports:
-      - "3001:8080"
-
-  dotnet:
-    image: lucastheiss31/aspnetapp:latest
-    pull_policy: always
-    ports:
-      - "3002:80"
+docker-compose up -d
 ```
 
-### Licensa
-
-Este projeto está sob licença do MIT.
-
-
-
-
-
-
-
-
+Você também deve configurar o firewall do servidor para aceitar conexões TCP somente do IP fixo atribuído ao servidor de load balance e somente nas portas definidas no `docker-compose.yml`
