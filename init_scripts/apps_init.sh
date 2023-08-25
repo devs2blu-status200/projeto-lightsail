@@ -48,6 +48,7 @@ sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 sudo service docker start
 sudo usermod -aG docker $USER
+sudo usermod -aG docker $USERNAME
 echo "Instalado Docker"
 echo "----------"
 

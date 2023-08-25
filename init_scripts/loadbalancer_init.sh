@@ -6,6 +6,30 @@ sudo apt-get install ca-certificates curl gnupg -y
 echo "Atualizado"
 echo "----------"
 
+# Adicionando usuário para github-actions
+read -p "Por favor, insira o nome do usuário que deseja criar: " USERNAME
+
+# 1. Criar o usuário
+sudo apt install -y openssh-server
+sudo useradd $USERNAME
+
+# 2. Adicionar o usuário ao grupo wheel
+sudo usermod -aG sudo $USERNAME
+
+# 3. Criar um diretório .ssh no diretório inicial do usuário
+sudo mkdir /home/$USERNAME/.ssh
+sudo chmod 700 /home/$USERNAME/.ssh
+
+# 4. Solicitar a chave pública SSH do usuário e salvar no arquivo ~/.ssh/authorized_keys desse usuário
+echo "Por favor, cole sua chave pública SSH e pressione Ctrl+D quando terminar:"
+sudo tee /home/$USERNAME/.ssh/authorized_keys > /dev/null
+sudo chmod 600 /home/$USERNAME/.ssh/authorized_keys
+sudo chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh
+
+echo "Usuário $USERNAME criado e configurado para autenticação por chave SSH."
+echo "Não esqueça de configurar o a chave secreta no repositório para que as automações funcionem!"
+echo "----------"
+
 # Instala o Git
 echo "Instalando Git"
 sudo apt install git -y
@@ -29,6 +53,9 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo service docker start
+sudo usermod -aG docker $USER
+sudo usermod -aG docker $USERNAME
 echo "Instalado Docker"
 echo "----------"
 
@@ -48,6 +75,8 @@ cd projeto-lightsail
 git sparse-checkout init --cone
 git sparse-checkout set nginx
 git checkout
+sudo chown -R $USERNAME:$USER /projeto-lightsail
+sudo chmod -R 774 /projeto-lightsail
 echo "Clonado"
 echo "----------"
 
