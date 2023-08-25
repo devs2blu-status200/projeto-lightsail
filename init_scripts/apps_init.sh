@@ -59,6 +59,8 @@ cd projeto-lightsail
 git sparse-checkout init --cone
 git sparse-checkout set docker-compose.yml
 git checkout
+sudo chown -R $USERNAME:$USER /projeto-lightsail
+sudo chmod -R 774 /projeto-lightsail
 echo "Clonado"
 echo "----------"
 
