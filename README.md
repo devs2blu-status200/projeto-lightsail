@@ -11,7 +11,7 @@ Serviço de computação em nuvem oferecido pela AWS, que tem o objeito de simpl
 
 ### Passo a passo: Criando banco de dados.
 
-Criar instância de banco de dados do lightsail na região us-east-2 (Ohio)
+Criar instância de banco de dados do lightsail na região `us-east-2 (Ohio)`
 
 É necessário informar um nome para o master database.
 
@@ -24,19 +24,19 @@ No menu Containers vamos em criar novo container, sendo na mesma região da base
 
 Selecionamos a versão nano e vamos para o Set Up deployment, especificando a customização do deploy
 
-Nome do container: wordpress-status200-<x>
+Nome do container: `wordpress-status200-<x>`
 
-Imagem escolhida: bitnami/wordpress:latest
+Imagem escolhida: `bitnami/wordpress:latest`
 
 Adicionar variáveis de ambiente:
 
-WORDPRESS_DATABASE_PASSWORD: senha do banco
+`WORDPRESS_DATABASE_PASSWORD`: senha do banco
 
-WORDPRESS_DATABASE_USER: usuário do banco
+`WORDPRESS_DATABASE_USER`: usuário do banco
 
-WORDPRESS_DATABASE_HOST: É o endpoint da nossa base de dados. 
+`WORDPRESS_DATABASE_HOST`: É o endpoint da nossa base de dados. 
 
-WORDPRESS_DATABASE_NAME: nome do master database
+`WORDPRESS_DATABASE_NAME`: nome do master database
 
 Liberar também as portas:
 
@@ -98,4 +98,5 @@ Uma vez concluído, para subir as aplicações basta executar.
 docker-compose up -d
 ```
 
-Você também deve configurar o firewall do servidor para aceitar conexões TCP somente do IP fixo atribuído ao servidor de load balance e somente nas portas definidas no `docker-compose.yml`
+Você também deve configurar o firewall do servidor para aceitar conexões TCP somente do IP fixo atribuído ao servidor de load balance e somente nas portas definidas no `docker-compose.yml`.
+Não se esqueça também de preencher as variáveis de ambiente no arquivo `.env` clonado do repositório. Esse arquivo **não deve** ser commitado depois de alterado.
