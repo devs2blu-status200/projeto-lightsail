@@ -66,4 +66,5 @@ echo "Clonado"
 echo "----------"
 
 echo "Configuração inicial concluída, não esqueça de: "
+echo "-Preencher as credenciais de acesso a banco no arquivo .env"
 echo "-Executar o docker-compose up -d para subir as aplicações"

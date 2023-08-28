@@ -98,4 +98,5 @@ Uma vez concluído, para subir as aplicações basta executar.
 docker-compose up -d
 ```
 
-Você também deve configurar o firewall do servidor para aceitar conexões TCP somente do IP fixo atribuído ao servidor de load balance e somente nas portas definidas no `docker-compose.yml`
+Você também deve configurar o firewall do servidor para aceitar conexões TCP somente do IP fixo atribuído ao servidor de load balance e somente nas portas definidas no `docker-compose.yml`.
+Não se esqueça também de preencher as variáveis de ambiente no arquivo `.env` clonado do repositório. Esse arquivo **não deve** ser commitado depois de alterado.
