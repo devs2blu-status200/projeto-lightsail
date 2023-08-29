@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('DB_PASSWORD')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []#'django.status200.sol.app.br'
+ALLOWED_HOSTS = ['django.status200.sol.app.br']
 
 
 # Application definition
