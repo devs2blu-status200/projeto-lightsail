@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using VisitorApp.Models;
+using aspnetapp.Models;
 
-namespace SeuNameSpace
+namespace aspnetapp.Data
 {
     public class AppDbContext : DbContext
     {

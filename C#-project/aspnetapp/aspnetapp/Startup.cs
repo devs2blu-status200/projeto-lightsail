@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SeuNameSpace;
 
 
-namespace MySqlDatabase
+namespace aspnetapp
 {
     public class Startup
     {
