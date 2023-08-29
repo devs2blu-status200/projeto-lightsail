@@ -1,6 +1,6 @@
 using System;
 
-namespace VisitorApp.Models
+namespace aspnetapp.Models
 {
     public class Visitor
     {
