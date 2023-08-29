@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wvKhHFP02Ko8b9QYkLXgjmIOHDAnGkMd8EL0ObpW9JLyyBaI+QvsyiMFEZT0+XXW1SKRWTKeHg52Z4uTprIt5Q==",
+  "dgSpecHash": "7DbKDkAmWwB8VaycE6gxYQvNV6Z8JwRisyNy3cNKnDZe+wMQmrakCw5FgRl3fXo9PrfPgUoW+ZSxBj5jwxpoNg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\lucas\\devops\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj",
+  "projectFilePath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\dotnetenv\\2.5.0\\dotnetenv.2.5.0.nupkg.sha512",

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using aspnetapp.Models;
-using SeuNameSpace;
+using aspnetapp.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace aspnetapp.Controllers;
