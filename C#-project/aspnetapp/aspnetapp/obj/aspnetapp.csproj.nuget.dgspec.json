@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\lucas\\devops\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj": {}
+    "c:\\Users\\lucas\\devops\\projeto-lightsail\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj": {}
   },
   "projects": {
-    "c:\\Users\\lucas\\devops\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj": {
+    "c:\\Users\\lucas\\devops\\projeto-lightsail\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\lucas\\devops\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj",
+        "projectUniqueName": "c:\\Users\\lucas\\devops\\projeto-lightsail\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj",
         "projectName": "aspnetapp",
-        "projectPath": "c:\\Users\\lucas\\devops\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj",
+        "projectPath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\C#-project\\aspnetapp\\aspnetapp\\aspnetapp.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\lucas\\devops\\C#-project\\aspnetapp\\aspnetapp\\obj\\",
+        "outputPath": "c:\\Users\\lucas\\devops\\projeto-lightsail\\C#-project\\aspnetapp\\aspnetapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SeuNameSpace;
+using aspnetapp.Data;
 
 
 namespace aspnetapp
