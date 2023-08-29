@@ -70,13 +70,15 @@ echo "----------"
 
 # Clona o projeto git
 echo "Clonando o projeto git"
+cd /
 git clone --filter=blob:none --no-checkout https://github.com/devs2blu-status200/projeto-lightsail.git
+sudo chown -R $USERNAME:$USER /projeto-lightsail
+sudo chmod -R 774 /projeto-lightsail
+git config --global --add safe.directory /projeto-lightsail
 cd projeto-lightsail
 git sparse-checkout init --cone
 git sparse-checkout set nginx
 git checkout
-sudo chown -R $USERNAME:$USER /projeto-lightsail
-sudo chmod -R 774 /projeto-lightsail
 echo "Clonado"
 echo "----------"
 
