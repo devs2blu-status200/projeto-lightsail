@@ -5,9 +5,10 @@ from django.db import connection
 
 def index(request):
     return render(request, 'index.html')
+
 def quantidade_tabelas(request):
     with connection.cursor() as cursor:
-            cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+            cursor.execute("show tables")
             tables = [table[0] for table in cursor.fetchall()]
 
 
