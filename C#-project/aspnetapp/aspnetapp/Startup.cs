@@ -15,10 +15,10 @@ namespace aspnetapp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string host = Environment.GetEnvironmentVariable("DB_HOST");
-            string database = Environment.GetEnvironmentVariable("DB_NAME");
-            string user = Environment.GetEnvironmentVariable("DB_USER");
-            string password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+            string host = Environment.GetEnvironmentVariable("DB_HOST")!;
+            string database = Environment.GetEnvironmentVariable("DB_NAME")!;
+            string user = Environment.GetEnvironmentVariable("DB_USER")!;
+            string password = Environment.GetEnvironmentVariable("DB_PASSWORD")!;
 
             string connectionString = $"Server={host};Database={database};User={user};Password={password}";
 

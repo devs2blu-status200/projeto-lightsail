@@ -1,4 +1,3 @@
-using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
 
