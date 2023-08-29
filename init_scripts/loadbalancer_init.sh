@@ -13,8 +13,9 @@ read -p "Por favor, insira o nome do usuário que deseja criar: " USERNAME
 sudo apt install -y openssh-server
 sudo useradd $USERNAME
 
-# 2. Adicionar o usuário ao grupo wheel
+# 2. Adicionar o usuário ao grupo sudo e remover exigência de senha
 sudo usermod -aG sudo $USERNAME
+echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
 # 3. Criar um diretório .ssh no diretório inicial do usuário
 sudo mkdir /home/$USERNAME/.ssh
