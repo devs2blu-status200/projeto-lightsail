@@ -71,17 +71,18 @@ echo "Configuração inicial concluída, não esqueça de: "
 echo "-Preencher as credenciais de acesso a banco no arquivo .env"
 echo "-Executar o docker-compose up -d para subir as aplicações"
 
-# Criar uma partição de swap
+# Criação do swapfile
+echo "Criando swapfile"
 sudo fallocate -l 2G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 
-# Adicionar a partição de swap ao /etc/fstab para ativação na inicialização
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+# Adiciona configuração de swap no /etc/fstab
+echo "Adicionando configuração de swap no /etc/fstab"
+echo '/swapfile swap swap defaults 0 0' | sudo tee -a /etc/fstab
 
-# Verificar a partição de swap
+echo "----------"
 sudo swapon --show
 sudo free -h
-
-echo "Partição de swap configurada com sucesso."
+echo "Partição criada com sucesso"
