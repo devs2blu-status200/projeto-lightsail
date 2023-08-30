@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   node:
-    container_name: django
+    container_name: node
     image: lucastheiss31/nodecontainer:latest
     pull_policy: always
     ports:
@@ -15,7 +15,7 @@ services:
 
 
   java:
-    container_name: django
+    container_name: java
     image: lucastheiss31/webjavav2:latest
     pull_policy: always
     ports:
@@ -24,7 +24,7 @@ services:
       - .env
     
   dotnet:
-    container_name: django
+    container_name: dotnet
     image: lucastheiss31/aspnetapp:latest
     pull_policy: always
     ports:
