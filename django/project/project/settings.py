@@ -86,8 +86,7 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': '3306',
-    }   #Login: dbmasteruser
-        #Password: -diJD6L+A75!>{.kG(50lfo{W-zXZESK
+    }
 }
 
 
