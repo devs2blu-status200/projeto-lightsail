@@ -13,19 +13,16 @@ namespace aspnetapp
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            string host = Environment.GetEnvironmentVariable("DB_HOST")!;
-            string database = Environment.GetEnvironmentVariable("DB_NAME")!;
-            string user = Environment.GetEnvironmentVariable("DB_USER")!;
-            string password = Environment.GetEnvironmentVariable("DB_PASSWORD")!;
+        DotEnv.Load(); // Carregue as variáveis de ambiente do arquivo .env
 
-            string connectionString = $"Server={host};Database={database};User={user};Password={password}";
+            // Obtenha as variáveis de ambiente
+            string dbHost = DotEnv.Get("DB_HOST");
+            string dbName = DotEnv.Get("DB_NAME");
+            string dbUser = DotEnv.Get("DB_USER");
+            string dbPassword = DotEnv.Get("DB_PASSWORD");
 
-                services.AddDbContext<AppDbContext>(options =>
-                {
-                    options.UseMySQL(connectionString); // UseMySql instead of UseMySQL
-        });
+        options.UseMySQL(connectionString); // UseMySql instead of UseMySQL
+        
 
             // Other service configurations
         }
