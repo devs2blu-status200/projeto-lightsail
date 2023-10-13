@@ -1,7 +1,25 @@
+using aspnetapp;
+using aspnetapp.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-DotNetEnv.Env.Load();
+var root = Directory.GetCurrentDirectory();
+var dotenv = Path.Combine(root, ".env");
+DotEnv.Load(dotenv);
+
+var dbName = builder.Configuration["DB_NAME:ConnectionString"] = Environment.GetEnvironmentVariable("DB_NAME");
+var dbHost = builder.Configuration["DB_HOST:ConnectionString"] = Environment.GetEnvironmentVariable("DB_HOST");
+var dbPort = builder.Configuration["DB_PORT:ConnectionString"] = Environment.GetEnvironmentVariable("DB_PORT");
+var dbPassword = builder.Configuration["DB_PASSWORD:ConnectionString"] = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+// string connectionString = $"Server={host};Database={database};User={user};Password={password}";
+
+var connectionString = $"server={dbHost};port={dbPort};database={dbName};user=root;password={dbPassword}";
+
+// builder.Services.AddDbContext<AppDbContext>(o => o.UseMySql(connectionString));
+
+builder.Services.AddDbContext<AppDbContext>(o => o.UseMySQL(connectionString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -9,6 +27,9 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 app.MapHealthChecks("/healthz");
+
+
+        
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
